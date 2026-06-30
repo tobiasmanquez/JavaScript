@@ -28,7 +28,7 @@ Respondé esta pregunta en papel antes de ver la respuesta:
 Rta: Sí, hay un caso donde tiene hay que usarlo y es para verificar si una variable es null o undefined de forma simultánea. */
 
 
-/* Parte C — Arreglar código roto
+/* Parte C — Arreglar código rotoir
 Los tres fragmentos de abajo usan == y tienen un bug. Para cada uno:
 
 Explicá qué problema puede causar el ==.

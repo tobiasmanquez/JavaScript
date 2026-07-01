@@ -32,6 +32,13 @@
 
   <script>
     // Tu código acá:
+    const input = document.getElementById("nombre")
+    const output = document.getElementById("saludo")
+    input.addEventListener("input",(event)=>{
+      const saludo = event.target.value;
+      output.textContent=(`Hola , ${saludo || `...`}`)
+    })
+
     // 1. Seleccioná el input (#nombre) y la salida (#salida)
     // 2. Escuchá el evento "input" sobre el campo
     // 3. Mostrá event.target.value dentro de #salida

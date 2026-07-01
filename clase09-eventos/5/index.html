@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica 05 — Filtro de jugadores</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            max-width: 420px;
+            margin: 3rem auto;
+            padding: 0 1rem;
+        }
+
+        input {
+            font-size: 1.1rem;
+            padding: 0.5rem;
+            width: 100%;
+            box-sizing: border-box;
+            margin-bottom: 1rem;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            padding: 0.5rem 1rem;
+            margin-bottom: 0.4rem;
+            background-color: #f0f0f0;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Buscar jugador</h1>
+
+    <input id="buscador" placeholder="Escribí para filtrar...">
+
+    <ul id="lista"></ul>
+
+    <script>
+        const jugadores = [
+            "Lionel Messi",
+            "Emiliano Martínez",
+            "Julián Álvarez",
+            "Enzo Fernández",
+            "Rodrigo De Paul",
+            "Ángel Di María",
+            "Cristiano Ronaldo",
+            "Kylian Mbappé",
+        ];
+
+        // Tu código acá:
+
+        const buscador = document.getElementById("buscador");
+        const lista = document.querySelector("#lista");
+
+        for (const jugador of jugadores) {
+
+            const item = document.createElement("li");
+            lista.appendChild(item);
+            item.textContent = jugador;
+
+            buscador.addEventListener("input", (event) => {
+
+                const texto = event.target.value.toLowerCase();
+
+                const coincide = item.textContent.toLowerCase().includes(texto);
+                item.style.display = coincide ? "" : "none";
+
+            });
+        };
+
+
+        // 1. Renderizá la lista: un <li> por jugador, agregado al #lista
+        // 2. Escuchá el evento "input" del #buscador
+        // 3. Mostrá/ocultá cada <li> según si coincide con lo tipeado (sin importar mayúsculas)
+    </script>
+</body>
+
+</html>

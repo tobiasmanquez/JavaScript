@@ -30,16 +30,19 @@
     <p id="ultimo">Este es el último párrafo. Su texto debería ser color tomato.</p>
 
     <script>
+        
         // Tu código acá:
 
-         // 1. Cambiá el texto del h1
+        // 1. Cambiá el texto del h1
         const titulo = document.querySelector("h1");
         titulo.textContent = "JavaScript puede cambiar todo";
 
         // 2. Agregá la clase "destacado" al primer párrafo
-        
+        document.querySelector("#primero").classList.add("destacado");
 
         // 3. Cambiá el color del último párrafo a "tomato"
+        document.querySelector("#ultimo").style.color = "tomato";
+        
     </script>
 </body>
 

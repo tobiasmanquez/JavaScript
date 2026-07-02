@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACTIVITY 1</title>
+</head>
+
+<body>
+    <script>
+
+        //1. Creá un objeto `jugador` con `nombre: "Messi"`, `pais: "Argentina"` y `goles: 8`.
+        const jugador = {
+            nombre: "Messi",
+            pais: "Argentina",
+            goles: 18,
+        };
+
+        //2. Convertilo a texto con `JSON.stringify` y guardalo en una variable `texto`.
+        const texto = (JSON.stringify(jugador));
+
+        //3. Mostrá `texto` y mostrá `typeof texto`. Confirmá que es un `"string"`.
+        console.log(texto);
+        console.log(typeof texto);
+
+        console.log(texto.nombre); 
+        
+        const objeto = JSON.parse(texto);
+
+        console.log(objeto.nombre); // "Messi" ✅
+        console.log(typeof objeto); // "object"
+
+
+    </script>
+
+</body>
+
+</html>
+
+# Práctica 01 — De objeto a texto y vuelta 🟢
+
+> **Dificultad:** 🟢 base
+
+## Objetivo
+
+Hacer el viaje de ida y vuelta de JSON: convertir un objeto a texto con `JSON.stringify` y reconstruirlo con
+`JSON.parse`, viendo en cada paso qué tipo de dato tenés.servá qué da y **explicá en un comentario por qué**.
+5. Convertí `texto` de vuelta a un objeto con
+
+## Consigna
+
+1. Creá un objeto `jugador` con `nombre: "Messi"`, `pais: "Argentina"` y `goles: 8`.
+2. Convertilo a texto con `JSON.stringify` y guardalo en una variable `texto`.
+3. Mostrá `texto` y mostrá `typeof texto`. Confirmá que es un `"string"`.
+4. Intentá leer `texto.nombre` y mostralo. Ob `JSON.parse`, guardalo en `objeto`.
+6. Mostrá `objeto.nombre` y `typeof objeto`. Confirmá que ahora sí podés leer la propiedad.

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACTIVITY 5</title>
+</head>
+
+<body>
+
+    <script>
+        const datosJSON = `[
+            { "equipo": "Argentina", "ganados": 2, "empatados": 1, "perdidos": 0 },
+            { "equipo": "México", "ganados": 1, "empatados": 1, "perdidos": 1 },
+            { "equipo": "Polonia", "ganados": 0, "empatados": 2, "perdidos": 1 },
+            { "equipo": "Arabia", "ganados": 1, "empatados": 0, "perdidos": 2 }
+        ]`;
+
+        const datosArrays = JSON.parse(datosJSON);
+
+        const tablaNueva = datosArrays.map((equipo) => ({
+            equipo: equipo.equipo,
+            puntos: equipo.ganados * 3 + equipo.empatados
+        }))
+
+        console.log(tablaNueva)
+        const Ordenada = [...tablaNueva].sort((a, b) => a - b)
+
+        Ordenada.forEach((e, i) => console.log(`${i + 1}. ${e.equipo} — ${e.puntos} pts`));
+
+
+    </script>
+
+</body>
+
+</html>
+# Práctica 05 — Tabla de posiciones desde JSON 🔴
+
+> **Dificultad:** 🔴 desafío
+
+## Objetivo
+
+Integrar todo: recibir datos como un **string JSON** (igual que vendrían de un archivo guardado o de una API),
+parsearlos y procesarlos con los métodos de array de la clase 06 (`map`, `filter`, `sort`).
+
+## Consigna
+
+Te llega la información de un grupo del Mundial como un único string JSON (simulá que lo leíste de `localStorage` o lo
+trajiste de un servidor):
+
+```js
+const datosJSON = `[
+{ "equipo": "Argentina", "ganados": 2, "empatados": 1, "perdidos": 0 },
+{ "equipo": "México", "ganados": 1, "empatados": 1, "perdidos": 1 },
+{ "equipo": "Polonia", "ganados": 0, "empatados": 2, "perdidos": 1 },
+{ "equipo": "Arabia", "ganados": 1, "empatados": 0, "perdidos": 2 }
+]`;
+```
+
+1. Convertí el string en un array de objetos con `JSON.parse`.
+2. Para cada equipo, calculá sus **puntos**: 3 por ganado, 1 por empatado, 0 por perdido. Generá un array nuevo donde
+cada objeto tenga `equipo` y `puntos` (usá `map`).
+3. Ordená la tabla de **mayor a menor** por puntos (usá `sort`, sin mutar el original — acordate del spread de la clase
+07).
+4. Mostrá la tabla final, por ejemplo: `1. Argentina — 7 pts`.
+5. **Cierre:** volvé a convertir la tabla ordenada a un string JSON **con formato** (`JSON.stringify(tabla, null, 2)`),
+listo para guardarlo de nuevo.

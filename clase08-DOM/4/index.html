@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica 04 — Tarjetas de jugadores</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        #contenedor {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .tarjeta {
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            padding: 1rem 1.5rem;
+            min-width: 180px;
+            background-color: #f9f9f9;
+        }
+
+        .tarjeta h2 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.2rem;
+        }
+
+        .tarjeta p {
+            margin: 0.25rem 0;
+            color: #444;
+        }
+
+        /* Esta clase se agrega desde JS cuando goles > 5 */
+        .tarjeta.destacado {
+            border-color: gold;
+            background-color: #fffbe6;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Goleadores del Mundial 2026</h1>
+
+    <!-- Este contenedor empieza vacío. Tu JS va a llenarlo con tarjetas. -->
+    <div id="contenedor"></div>
+
+    <script>
+        const jugadores = [
+            { nombre: "Messi", pais: "🇦🇷 Argentina", goles: 8 },
+            { nombre: "Haaland", pais: "🇳🇴 Noruega", goles: 12 },
+            { nombre: "Mbappé", pais: "🇫🇷 Francia", goles: 5 },
+            { nombre: "Kane", pais: "🏴󠁧󠁢󠁥󠁮󠁧󠁿 Inglaterra", goles: 2 },
+        ];
+
+        // Tu código acá:
+
+
+        const contenedor = document.getElementById("contenedor"); // 1. Seleccionamos el contenedor donde se agregarán las tarjetas
+
+        // 2. Recorremos el array de jugadores
+        for (const jugador of jugadores) {
+
+            const tarjeta = document.createElement("div"); // 3. Creamos el elemento principal de la tarjeta
+            tarjeta.classList.add("tarjeta");
+
+
+            if (jugador.goles > 5) {
+                tarjeta.classList.add("destacado"); // 4. Vemos si tiene más de 5 goles para sumar la clase "destacado"
+            }
+
+            // 5. Creamos el contenido interno de la tarjeta
+            const nombreElemento = document.createElement("h2");
+            nombreElemento.textContent = jugador.nombre;// 5. Creamos el contenido interno de la tarjeta
+
+            const paisElemento = document.createElement("p"); //    - <p> con el país
+            paisElemento.textContent = jugador.pais;
+
+            const golesElemento = document.createElement("p"); //    - <p> con los goles (usá un template literal: `Goles: ${...}`)
+            golesElemento.textContent = `Goles: ${jugador.goles}`;
+
+            // 6. Agregamos los elementos creados dentro de la tarjeta
+            tarjeta.append(nombreElemento, paisElemento, golesElemento);
+
+            // 7. Agregamos la tarjeta completa al contenedor principal
+            contenedor.append(tarjeta);
+        }
+
+        // 1. Seleccioná el div#contenedor
+        // 2. Recorré el array con for...of
+        // 3. Por cada jugador, creá un <div class="tarjeta"> con:
+        //    - <h2> con el nombre
+        //    - <p> con el país
+        //    - <p> con los goles (usá un template literal: `Goles: ${...}`)
+        // 4. Si el jugador tiene más de 5 goles, agregale la clase "destacado" a la tarjeta
+        // 5. Agregá cada tarjeta al contenedor con appendChild
+    </script>
+</body>
+
+</html>

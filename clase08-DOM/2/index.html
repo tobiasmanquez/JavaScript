@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica 02 — Modificar el DOM</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        /* Esta clase ya existe: agregala con classList.add */
+        .destacado {
+            background-color: yellow;
+            padding: 0.5rem;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="titulo">Título original</h1>
+
+    <p id="primero">Este es el primer párrafo. Debería tener fondo amarillo.</p>
+    <p id="segundo">Este es el segundo párrafo. No hay que tocarlo.</p>
+    <p id="ultimo">Este es el último párrafo. Su texto debería ser color tomato.</p>
+
+    <script>
+        
+        // Tu código acá:
+
+        // 1. Cambiá el texto del h1
+        const titulo = document.querySelector("h1");
+        titulo.textContent = "JavaScript puede cambiar todo";
+
+        // 2. Agregá la clase "destacado" al primer párrafo
+        document.querySelector("#primero").classList.add("destacado");
+
+        // 3. Cambiá el color del último párrafo a "tomato"
+        document.querySelector("#ultimo").style.color = "tomato";
+        
+    </script>
+</body>
+
+</html>

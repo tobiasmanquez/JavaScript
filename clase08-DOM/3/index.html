@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica 03 — Lista dinámica</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            max-width: 400px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            padding: 0.5rem 1rem;
+            margin-bottom: 0.5rem;
+            background-color: #f0f0f0;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Grupos del Mundial 2026</h1>
+
+    <!-- Esta lista empieza vacía. Tu JS va a llenarla. -->
+    <ul id="lista-grupos"></ul>
+
+    <script>
+        // Tu código acá:
+
+        // 1. Creá un array con los nombres: "Grupo A", "Grupo B", ..., "Grupo E"
+        const grupos = ["Grupo A", "Grupo B", "Grupo C", "Grupo D", "Grupo E"];
+
+        // 2. Seleccioná el <ul>
+        const listaGrupos = document.getElementById("lista-grupos");
+
+        // Recorremos el array con un for...of
+        for (const grupo of grupos) {
+
+            // 3. Creamos un elemento <li>
+            const nuevoElemento = document.createElement("li");
+
+            // Le asignamos el nombre del grupo como textContent
+            nuevoElemento.textContent = grupo;
+
+            // Agregamos el <li> como hijo del <ul>
+            listaGrupos.appendChild(nuevoElemento);
+        }
+
+        // 1. Creá un array con los nombres: "Grupo A", "Grupo B", ..., "Grupo E"
+        // 2. Seleccioná el <ul>
+        // 3. Por cada nombre, creá un <li>, asignale textContent, y agregalo al <ul>
+    </script>
+</body>
+
+</html>

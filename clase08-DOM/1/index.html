@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica 01 — El script que llega tarde</title>
+
+</head>
+
+<body>
+    <h1>Texto original</h1>
+    <p>Abrí la consola del navegador (F12) para ver el error.</p>
+
+    <!-- BUG: este script corre antes de que el <h1> exista en el DOM -->
+    <script>
+
+        const titulo = document.querySelector("h1");
+        console.log(titulo); // null ← ¿por qué?
+
+        titulo.textContent = "Hola, mundo!"; // TypeError: Cannot set properties of null
+
+    </script>
+    
+    //Moví el script al body, porque si esta en head, El navegador lee de arriba hacia abajo.
+Cuando ejecuta el script, el <body> todavía no fue parseado.
+El <h1> no existe en el DOM todavía.
+</body>
+
+</html>

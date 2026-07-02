@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica 05 — Filtro de equipos</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            max-width: 480px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        input {
+            width: 100%;
+            padding: 0.5rem 0.75rem;
+            font-size: 1rem;
+            border: 2px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+            margin-bottom: 1rem;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #4a90e2;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            padding: 0.5rem 0.25rem;
+            border-bottom: 1px solid #eee;
+            font-size: 1rem;
+        }
+
+        #sin-resultados {
+            color: #888;
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Equipos del Mundial 2026</h1>
+
+    <input id="buscador" type="text" placeholder="Buscar equipo...">
+
+    <ul id="lista">
+        <li>Argentina</li>
+        <li>Brasil</li>
+        <li>Francia</li>
+        <li>Alemania</li>
+        <li>España</li>
+        <li>Portugal</li>
+        <li>Marruecos</li>
+        <li>Japon</li>
+    </ul>
+
+    <p id="sin-resultados" style="display:none">No se encontraron equipos.</p>
+
+    <script>
+        // TODO: completar este bloque
+
+        // 1. Seleccioná el input#buscador y agregale un listener para el evento "input"
+        const buscador = document.getElementById("buscador");
+        const items = document.querySelectorAll("li");
+        const sinResultados = document.getElementById("sin-resultados");
+
+        buscador.addEventListener("input", function () {
+            const textoBuscado = buscador.value.toLowerCase(); // 2. En el handler, leé el valor del input con .value.toLowerCase()
+            let contadorVisibles = 0;
+
+            /* 3. Recorré todos los <li> con querySelectorAll("li") + forEach:
+                 - Si el textContent del
+              <li> incluye el texto buscado → style.display = ""
+                 - Si no → style.display = "none"*/
+
+            items.forEach(function (item) {
+                const textoItem = item.textContent.toLowerCase();
+
+                if (textoItem.includes(textoBuscado)) {
+                    item.style.display = "";
+                    contadorVisibles++;
+                } else {
+                    item.style.display = "none";
+                }
+            });
+
+            /* 4. Contá cuántos
+               <li> quedaron visibles. Si ninguno, mostrá #sin-resultados.
+                 // Si hay al menos uno, asegurate de ocultar #sin-resultados*/
+
+
+            if (contadorVisibles === 0) {
+                sinResultados.style.display = "";
+            } else {
+                sinResultados.style.display = "none";
+            }
+        });
+
+    </script>
+
+</body>
+
+</html>

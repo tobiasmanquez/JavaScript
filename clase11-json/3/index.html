@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACTIVITY 3</title>
+</head>
+
+<body>
+
+    <script>
+
+        /* 
+        const roto1 = "{'nombre': 'Messi', 'goles': 8}"; //Comillas dobles en claves y en strings (nunca simples)
+        const roto2 = '{nombre: "Messi", goles: 8}'; //Todas las claves entre comillas.
+        const roto3 = '{"nombre": "Messi", "goles": 8,}'; //Sin coma final después del último elemento. */
+
+
+        const valido = '{"nombre": "Messi", "goles": 18}';
+        const corregido = JSON.parse(valido)
+        console.log(corregido.nombre)
+
+
+
+    </script>
+
+</body>
+
+</html>
+# Práctica 03 — Arreglar el JSON roto 🟡
+
+> **Dificultad:** 🟡 intermedia
+
+## Objetivo
+
+Identificar por qué un texto falla en `JSON.parse` y corregirlo aplicando las reglas del JSON válido.
+
+## Consigna
+
+Te pasan estos tres strings, supuestamente JSON, que vienen de archivos escritos a mano. Los tres **fallan** al hacer
+`JSON.parse`. Tu tarea es arreglarlos.
+
+```js
+const roto1 = "{'nombre': 'Messi', 'goles': 8}";
+const roto2 = '{nombre: "Messi", goles: 8}';
+const roto3 = '{"nombre": "Messi", "goles": 8,}';
+```
+
+Para cada uno:
+
+1. Antes de tocar nada, **identificá en un comentario** qué regla de JSON está rompiendo.
+2. Escribí la versión corregida como un string JSON **válido**.
+3. Verificá que `JSON.parse(corregido)` ahora funcione y mostrá el `nombre` del objeto resultante.
+
+## Pistas

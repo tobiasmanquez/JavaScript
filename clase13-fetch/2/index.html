@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Traer un dato</title>
+
+  <style>
+    body {
+      font-family: sans-serif;
+      max-width: 420px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    button {
+      font-size: 1rem;
+      padding: 0.4rem 0.8rem;
+      cursor: pointer;
+    }
+
+    #ficha {
+      margin-top: 1rem;
+      padding: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+    }
+
+    #ficha:empty {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Ficha del jugador</h1>
+
+  <button id="cargar">Cargar jugador</button>
+  <div id="ficha"></div>
+
+  <script>
+    const boton = document.querySelector("#cargar");
+    const ficha = document.querySelector("#ficha");
+
+    boton.addEventListener("click", async () => {
+      // TODO 1: hacer fetch del archivo "data/jugador.json" y esperar la respuesta
+
+      const respuesta = await fetch("data/jugador.json")
+      // (acordate: fetch necesita Live Server, no funciona con doble clic / file://)
+
+      // TODO 2: convertir el cuerpo de la respuesta a objeto con .json()
+      const jugador = await respuesta.json();
+
+      // TODO 3: pintar en #ficha el nombre, la posición, el número y el club.
+
+      ficha.innerHTML =
+        `<strong>${jugador.nombre}</strong><br>
+  ${jugador.posicion} · #${jugador.numero} · ${jugador.club}`;
+
+      //ficha.textContent = (`Nombre: ${jugador.nombre} - Posicion: ${ugador.posicion} - Numero: ${jugador.numero} - Club: ${jugador.club}`)
+      // Ejemplo de salida:
+      //   Lionel Messi
+      //   Delantero · #10 · Inter Miami
+    });
+  </script>
+</body>
+
+</html>
+
+<!-- # Práctica 02 — Traer y mostrar un dato 🟢
+
+> **Dificultad:** base
+> **Tiempo estimado:** 15–20 minutos
+
+## Objetivo
+
+Hacer tu primer `fetch` completo: pedir datos, esperarlos con `await`, convertirlos con `.json()` y mostrarlos en el DOM.
+
+## Punto de partida
+
+La carpeta trae:
+- `index.html` — un botón "Cargar jugador" y un `<div id="ficha">` vacío.
+- `data/jugador.json` — un objeto con los datos de un jugador.
+
+> ⚠️ **Importante:** `fetch` sobre un archivo local **necesita un servidor**. Abrí el `index.html` con **Live Server** (en VS Code: clic derecho → "Open with Live Server"). Si lo abrís con doble clic (`file://`), `fetch` falla.
+
+## Tu tarea
+
+Completá los TODO del `<script>` para que, al hacer click en el botón:
+
+1. Se haga `fetch("data/jugador.json")` y se espere la respuesta con `await`.
+2. Se convierta el cuerpo a objeto con `await respuesta.json()`.
+3. Se muestre en `#ficha` el nombre, la posición, el número y el club del jugador. -->

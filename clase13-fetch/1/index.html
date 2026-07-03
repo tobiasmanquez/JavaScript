@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACTIVITY 1</title>
+</head>
+
+<body>
+
+    <script>
+
+//Bloque A
+
+console.log("uno"); 
+console.log("dos");
+console.log("tres");
+//Prediccion:
+// va a imprimir uno, dos y tres en ese orden 
+// uno
+// dos
+// tres
+
+//Bloque B
+
+console.log("uno");
+setTimeout(() => console.log("dos"), 0);
+console.log("tres");
+//Prediccion:
+// uno
+// tres
+// dos
+// Este bloque es distinto porque hay un delay en medio, El "dos" sale último, aunque el delay sea 0.
+//porque JavaScript hace una sola cosa a la vez. Si se quedara esperando se congelaria la pagina
+//entonces las tareas lentas no bloquean. Se mandan a una fila de espera y se procesan después.
+
+//Bloque C
+
+console.log("empiezo");
+setTimeout(() => console.log("tarde"), 1000);
+setTimeout(() => console.log("temprano"), 0);
+console.log("termino");
+//Prediccion:
+// empiezo
+// termino
+// temparano
+// tarde
+// En este bloque es algo parecido al anterior, pero con el delay de 1000ms en "tarde" sale ultimo en la consola, 
+//por el mismo motivo que en el anterior caso
+
+ //Bloque D
+
+function saludar() {
+  console.log("hola");
+}
+console.log("antes");
+setTimeout(saludar, 0);
+console.log("después");
+//Prediccion:
+//antes
+//despues
+//hola
+//Este bloque agrega una function, pero eso no cambia nada es el mismo resul
+//que el bloque B
+
+
+</script>
+
+</body>
+
+</html>
+
+<!-- # Práctica 01 — Predecí el orden 🟢
+
+> **Dificultad:** base
+> **Tiempo estimado:** 10–15 minutos
+
+## Objetivo
+
+Afianzar el modelo mental del código asíncrono: entender por qué JavaScript no siempre ejecuta las líneas de arriba hacia abajo.
+
+## Contexto
+
+Antes de pedir datos a internet, hay que tener clarísimo *cuándo* corre cada cosa. En esta práctica no escribís casi nada: **predecís** la salida de varios bloques y después la verificás en la consola. El valor está en que escribas tu predicción **antes** de ejecutar.
+
+## Tu tarea
+
+Para cada bloque: escribí en un papel (o comentario) **qué imprime y en qué orden**. Recién después, pegalo en la consola del navegador y compará.
+
+### Bloque A
+
+```js
+console.log("uno");
+console.log("dos");
+console.log("tres");
+```
+
+### Bloque B
+
+```js
+console.log("uno");
+setTimeout(() => console.log("dos"), 0);
+console.log("tres");
+```
+
+### Bloque C
+
+```js
+console.log("empiezo");
+setTimeout(() => console.log("tarde"), 1000);
+setTimeout(() => console.log("temprano"), 0);
+console.log("termino");
+```
+
+### Bloque D
+
+```js
+function saludar() {
+  console.log("hola");
+}
+console.log("antes");
+setTimeout(saludar, 0);
+console.log("después");
+``` -->

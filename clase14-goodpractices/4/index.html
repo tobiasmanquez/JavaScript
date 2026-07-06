@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marcador</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: sans-serif;
+      max-width: 480px;
+      margin: 40px auto;
+      padding: 0 20px;
+      background: #f0f4f8;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 1.4em;
+      color: #333;
+      margin-bottom: 24px;
+    }
+
+    .marcador {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      background: white;
+      border-radius: 12px;
+      padding: 28px 16px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      margin-bottom: 20px;
+    }
+
+    .equipo {
+      text-align: center;
+    }
+
+    .equipo .nombre {
+      font-size: 0.9em;
+      color: #666;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .equipo .goles {
+      font-size: 3em;
+      font-weight: bold;
+      color: #2c3e50;
+      line-height: 1;
+    }
+
+    .separador {
+      font-size: 2em;
+      color: #bbb;
+    }
+
+    .controles {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .controles button {
+      flex: 1;
+      padding: 12px;
+      font-size: 1em;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background: #3498db;
+      color: white;
+      transition: background 0.2s;
+    }
+
+    .controles button:hover {
+      background: #2980b9;
+    }
+
+    #btn-reiniciar {
+      width: 100%;
+      padding: 10px;
+      font-size: 0.9em;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      cursor: pointer;
+      background: white;
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    #btn-reiniciar:hover {
+      background: #f5f5f5;
+    }
+
+    #resultado {
+      text-align: center;
+      font-size: 1em;
+      color: #555;
+      padding: 12px;
+      background: white;
+      border-radius: 8px;
+      min-height: 44px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Argentina vs Francia</h1>
+
+  <div class="marcador">
+    <div class="equipo">
+      <div class="nombre">Argentina</div>
+
+      <!-- BUG 1: el JS busca "#goles-argentina" pero el id real es "golesArgentina" -->
+      <div class="goles" id="golesArgentina">0</div>
+    </div>
+    <div class="separador">–</div>
+    <div class="equipo">
+      <div class="nombre">Francia</div>
+      <div class="goles" id="golesFrancia">0</div>
+    </div>
+  </div>
+
+  <div class="controles">
+    <button onclick="gol('argentina')">⚽ Gol Argentina</button>
+    <button onclick="gol('francia')">⚽ Gol Francia</button>
+  </div>
+  <button id="btn-reiniciar" onclick="reiniciar()">Reiniciar</button>
+
+  <div id="resultado">El partido no empezó.</div>
+
+  <script>
+    let golesA = 0;
+    let golesF = 0;
+
+    function gol(equipo) {
+      if (equipo === "argentina") {
+        golesA += 1;
+
+        // BUG 1: el selector no coincide con el id del HTML
+        document.querySelector("#goles-argentina").textContent = golesA;
+        //modificamos "#goles-argentina" por lo que dice en el id="golesArgentina"
+
+      } else {
+        golesF += 1;
+        document.querySelector("#golesFrancia").textContent = golesF;
+      }
+      mostrarResultado();
+    }
+
+    function reiniciar() {
+      golesA = 0;
+      golesF = 0;
+      // BUG 2: se resetean las variables pero el DOM no se actualiza
+      document.getElementById("resultado").textContent = "El partido no empezó.";
+    }
+
+    function mostrarResultado() {
+      let mensaje;
+      // BUG 3: la condición usa = (asignación) en lugar de > (comparación)
+      if (golesA = golesF) {
+        mensaje = "¡Empate! " + golesA + " – " + golesF;
+      } else if (golesA > golesF) {
+        mensaje = "Va ganando Argentina " + golesA + " – " + golesF;
+      } else {
+        mensaje = "Va ganando Francia " + golesA + " – " + golesF;
+      }
+      document.getElementById("resultado").textContent = mensaje;
+    }
+  </script>
+
+</body>
+
+</html>
+
+<!-- 1. Abrí `index.html` en el navegador.
+2. Probá cada función:
+   - Hacé clic en "⚽ Gol Argentina" varias veces.
+   - Hacé clic en "⚽ Gol Francia" varias veces.
+   - Hacé clic en "Reiniciar".
+3. Observá qué **no funciona** como debería. Hay exactamente tres comportamientos rotos.
+4. Para cada bug:
+   - Identificá el síntoma visible (qué ves que está mal).
+   - Encontrá la causa en el código (qué línea específica falla).
+   - Corregilo.
+5. Describí brevemente qué herramienta usaste para encontrar cada uno (consola de errores, `console.log`, breakpoint en DevTools). -->

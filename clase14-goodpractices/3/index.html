@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        function calcularPromedio(notas) {
+            const suma = sumarNotas(notas);
+            return suma / notas.length;
+        }
+
+        function sumarNotas(notas) {
+            return notas.reduce((acc, n) => acc + n, 0); // typo: recude
+        }
+
+        const resultado = calcularPromedio([8, 7, 9, 6]);
+        console.log(resultado);
+
+
+    </script>
+
+    <!-- Parte A — Leer el error
+
+   Copiá el mensaje de error completo que aparece en la consola. Respondé estas preguntas **antes de tocar el código**:
+
+1. ¿Qué **tipo** de error es? (TypeError, ReferenceError, SyntaxError…)
+   
+2. ¿Cuál es el **mensaje exacto**?
+     Uncaught TypeError: notas.recude is not a function
+         at sumarNotas (index.html:20:26)
+         at calcularPromedio (index.html:15:26)
+         at index.html:23:27
+
+3. ¿En qué **función** ocurrió el error y en qué línea?
+
+    El error ocurre en sumarNotas linea 20 
+
+4. ¿Qué función **llamó** a esa función? ¿Y quién llamó a esa? 
+    El error ocurre en sumarNotas linea 20 eso deriva en 
+calcularPromedio 15 y por ultimo esto recae en 
+index.html linea 23 -->
+
+<!-- Parte B — Corregí el typo
+
+Encontrá el error tipográfico en el código y corregilo. ¿Funciona ahora?
+
+el error esta en que la linea 20 "notas.recude" "recude" tiene un error de escritura, deberia de decir "reduce"
+
+Verificá que `calcularPromedio([8, 7, 9, 6])` devuelva `7.5`. -->
+
+ <!-- Parte C — Segundo bug
+
+Ahora introducí un segundo bug: en la línea `return suma / notas.length`, cambiá `notas.length` por `nota.length` (sin la `s`).
+
+1. ¿Qué tipo de error genera ahora? ¿Por qué es distinto al anterior?
+    Porque ahora se ve en la consola que no tira un TypeError sino un ReferenceError
+
+2. Leé el stack trace. ¿En qué función ocurre este error?
+    Ocurre en la funcion "calcularPromedio"
+
+3. Corregilo. -->
+
+
+
+
+</body>
+
+</html>
